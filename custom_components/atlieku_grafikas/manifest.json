@@ -1,0 +1,12 @@
+{
+  "domain": "atlieku_grafikas",
+  "name": "Atliekų grafikas",
+  "codeowners": ["@artkrv"],
+  "config_flow": true,
+  "documentation": "https://github.com/artkrv/atlieku-grafikas-ha",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/artkrv/atlieku-grafikas-ha/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

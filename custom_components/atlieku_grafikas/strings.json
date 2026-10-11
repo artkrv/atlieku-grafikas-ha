@@ -1,0 +1,56 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Atliekų grafikas",
+        "description": "Paste the calendar link from the Atliekų grafikas app (Settings → Addresses → calendar icon). Each address is added separately.",
+        "data": {
+          "url": "Calendar link"
+        },
+        "data_description": {
+          "url": "A link ending with .ics or .json. webcal:// links work too."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Calendar link no longer works",
+        "description": "Sync for {address} was turned off or renewed in the app. Turn it on again and paste the new link.",
+        "data": {
+          "url": "Calendar link"
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "This is not an Atliekų grafikas calendar link.",
+      "not_found": "The link no longer works — sync was turned off in the app. Turn it on again and copy the new link.",
+      "not_pro": "Calendar sync requires Atliekų grafikas Pro.",
+      "different_address": "This link belongs to a different address. Add it as a new entry instead.",
+      "unsupported_version": "The server uses a newer format. Update this integration.",
+      "cannot_connect": "Could not reach the Atliekų grafikas server.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This address is already added.",
+      "reauth_successful": "The link has been updated."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_pickup": {
+        "name": "Next pickup"
+      }
+    },
+    "calendar": {
+      "pickups": {
+        "name": "Pickups"
+      }
+    }
+  },
+  "exceptions": {
+    "feed_not_found": {
+      "message": "The calendar link no longer works — sync was turned off in the app."
+    },
+    "unsupported_version": {
+      "message": "The server uses a newer format. Update the Atliekų grafikas integration."
+    }
+  }
+}

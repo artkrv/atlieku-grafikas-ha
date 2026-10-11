@@ -1,0 +1,2 @@
+# Naujausia versija, palaikanti Python 3.13 (prisega homeassistant==2026.2.3).
+pytest-homeassistant-custom-component==0.13.316

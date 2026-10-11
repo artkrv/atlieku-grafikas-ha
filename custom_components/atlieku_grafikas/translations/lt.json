@@ -1,0 +1,56 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Atliekų grafikas",
+        "description": "Įklijuokite kalendoriaus nuorodą iš programėlės „Atliekų grafikas“ (Nustatymai → Adresai → kalendoriaus ženklas). Kiekvienas adresas pridedamas atskirai.",
+        "data": {
+          "url": "Kalendoriaus nuoroda"
+        },
+        "data_description": {
+          "url": "Nuoroda, kuri baigiasi .ics arba .json. Tinka ir webcal:// nuorodos."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Kalendoriaus nuoroda nebeveikia",
+        "description": "Adreso {address} sinchronizacija programėlėje išjungta arba atnaujinta. Įjunkite ją dar kartą ir įklijuokite naują nuorodą.",
+        "data": {
+          "url": "Kalendoriaus nuoroda"
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Tai ne „Atliekų grafiko“ kalendoriaus nuoroda.",
+      "not_found": "Nuoroda nebeveikia — sinchronizacija programėlėje išjungta. Įjunkite ją ir nukopijuokite naują nuorodą.",
+      "not_pro": "Kalendoriaus sinchronizacijai reikia „Atliekų grafikas“ Pro.",
+      "different_address": "Ši nuoroda kito adreso. Pridėkite ją kaip naują įrašą.",
+      "unsupported_version": "Serveris naudoja naujesnį formatą. Atnaujinkite integraciją.",
+      "cannot_connect": "Nepavyko pasiekti „Atliekų grafiko“ serverio.",
+      "unknown": "Netikėta klaida."
+    },
+    "abort": {
+      "already_configured": "Šis adresas jau pridėtas.",
+      "reauth_successful": "Nuoroda atnaujinta."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_pickup": {
+        "name": "Kitas išvežimas"
+      }
+    },
+    "calendar": {
+      "pickups": {
+        "name": "Išvežimai"
+      }
+    }
+  },
+  "exceptions": {
+    "feed_not_found": {
+      "message": "Kalendoriaus nuoroda nebeveikia — sinchronizacija programėlėje išjungta."
+    },
+    "unsupported_version": {
+      "message": "Serveris naudoja naujesnį formatą. Atnaujinkite „Atliekų grafikas“ integraciją."
+    }
+  }
+}
