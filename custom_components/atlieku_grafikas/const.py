@@ -16,6 +16,12 @@ CONF_URL = "url"
 # naudotojo be naujų duomenų visą parą.
 RETRY_INTERVAL = timedelta(hours=1)
 
+# Rūšys, kurių pavadinimus integracija verčia pati (`translations/*.json`,
+# `entity.sensor.<kodas>`). Kitoms — pavadinimas iš serverio (programėlės kalba).
+TRANSLATED_WASTE_TYPES = frozenset(
+    {"mixed", "packaging", "glass", "paper", "food", "organic", "bio", "green", "bulky"}
+)
+
 # Rūšies kodas → ikona. Nežinomai — bendra.
 WASTE_ICONS: dict[str, str] = {
     "mixed": "mdi:trash-can",

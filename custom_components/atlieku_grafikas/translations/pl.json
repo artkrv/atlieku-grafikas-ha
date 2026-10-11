@@ -1,0 +1,41 @@
+{
+  "entity": {
+    "sensor": {
+      "mixed": {
+        "name": "Odpady zmieszane"
+      },
+      "packaging": {
+        "name": "Opakowania"
+      },
+      "glass": {
+        "name": "Szkło"
+      },
+      "paper": {
+        "name": "Papier"
+      },
+      "food": {
+        "name": "Odpady spożywcze"
+      },
+      "organic": {
+        "name": "Bio"
+      },
+      "bio": {
+        "name": "Bioodpady"
+      },
+      "green": {
+        "name": "Odpady zielone"
+      },
+      "bulky": {
+        "name": "Odpady wielkogabarytowe"
+      },
+      "next_pickup": {
+        "name": "Następny odbiór"
+      }
+    },
+    "calendar": {
+      "pickup_calendar": {
+        "name": "Kalendarz odbiorów"
+      }
+    }
+  }
+}

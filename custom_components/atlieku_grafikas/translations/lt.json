@@ -35,13 +35,40 @@
   },
   "entity": {
     "sensor": {
+      "mixed": {
+        "name": "Mišrios"
+      },
+      "packaging": {
+        "name": "Pakuotės"
+      },
+      "glass": {
+        "name": "Stiklas"
+      },
+      "paper": {
+        "name": "Popierius"
+      },
+      "food": {
+        "name": "Maisto atliekos"
+      },
+      "organic": {
+        "name": "Bio"
+      },
+      "bio": {
+        "name": "Biologinės"
+      },
+      "green": {
+        "name": "Žaliosios"
+      },
+      "bulky": {
+        "name": "Stambiagabaritės"
+      },
       "next_pickup": {
         "name": "Kitas išvežimas"
       }
     },
     "calendar": {
-      "pickups": {
-        "name": "Išvežimai"
+      "pickup_calendar": {
+        "name": "Išvežimų kalendorius"
       }
     }
   },

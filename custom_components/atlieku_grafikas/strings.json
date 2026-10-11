@@ -35,13 +35,40 @@
   },
   "entity": {
     "sensor": {
+      "mixed": {
+        "name": "Mixed waste"
+      },
+      "packaging": {
+        "name": "Packaging"
+      },
+      "glass": {
+        "name": "Glass"
+      },
+      "paper": {
+        "name": "Paper"
+      },
+      "food": {
+        "name": "Food waste"
+      },
+      "organic": {
+        "name": "Organic"
+      },
+      "bio": {
+        "name": "Biodegradable"
+      },
+      "green": {
+        "name": "Garden waste"
+      },
+      "bulky": {
+        "name": "Bulky & hazardous"
+      },
       "next_pickup": {
         "name": "Next pickup"
       }
     },
     "calendar": {
-      "pickups": {
-        "name": "Pickups"
+      "pickup_calendar": {
+        "name": "Pickup calendar"
       }
     }
   },

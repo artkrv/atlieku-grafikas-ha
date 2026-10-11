@@ -22,7 +22,7 @@ async def async_setup_entry(
 
 
 class AtliekuGrafikasCalendar(AtliekuGrafikasEntity, CalendarEntity):
-    _attr_translation_key = "pickups"
+    _attr_translation_key = "pickup_calendar"
 
     def __init__(self, coordinator: AtliekuGrafikasCoordinator) -> None:
         super().__init__(coordinator, "calendar")
@@ -38,7 +38,7 @@ class AtliekuGrafikasCalendar(AtliekuGrafikasEntity, CalendarEntity):
             CalendarEvent(
                 start=d,
                 end=d + timedelta(days=1),
-                summary=waste.name,
+                summary=self.coordinator.waste_name(waste.code, waste.name),
                 description="\n".join([waste.code, *waste.providers]),
                 uid=f"{waste.code}-{d.isoformat()}",
             )

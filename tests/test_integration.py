@@ -226,3 +226,39 @@ async def test_nepasikeitus_304_naudojami_turimi_duomenys(
     assert coordinator.last_update_success
     assert coordinator.data.address.label == "Vilniaus g. 5, Bajorai"
     assert aioclient_mock.mock_calls[-1][3]["If-None-Match"] == '"abc"'
+
+
+@pytest.mark.parametrize(
+    ("language", "mixed_name", "calendar_name"),
+    [("en", "Mixed waste", "Pickup calendar"), ("lt", "Mišrios", "Išvežimų kalendorius")],
+)
+async def test_pavadinimai_ha_kalba(
+    hass: HomeAssistant, aioclient_mock: AiohttpClientMocker, frozen,
+    language: str, mixed_name: str, calendar_name: str,
+) -> None:
+    """Rūšių pavadinimai — HA kalba, ne programėlės (serveris siunčia „Mišrios")."""
+    hass.config.language = language
+    data = payload()
+    data["language"] = "lt"
+    data["wasteTypes"].append(
+        {"code": "textile", "name": "Tekstilė", "nextDate": "2026-10-20", "daysUntil": 9,
+         "dates": ["2026-10-20"], "providers": []}
+    )
+    aioclient_mock.get(JSON_URL, json=data)
+    entry = await _setup(hass)
+
+    mixed = hass.states.get(_entity(hass, entry, "sensor:mixed"))
+    assert mixed.attributes["friendly_name"].endswith(mixed_name)
+
+    # Nežinoma rūšis — serverio pavadinimas.
+    textile = hass.states.get(_entity(hass, entry, "sensor:textile"))
+    assert textile.attributes["friendly_name"].endswith("Tekstilė")
+
+    calendar = hass.states.get(_entity(hass, entry, "calendar:calendar"))
+    assert calendar.attributes["friendly_name"].endswith(calendar_name)
+    # Įvykio pavadinimas — ta pati kalba kaip jutiklio. Tą pačią dieną (10-14) — stiklas
+    # ir mišrios; įvykiai rikiuojami pagal pavadinimą, tad pirmas skiriasi pagal kalbą.
+    assert calendar.attributes["message"] == ("Glass" if language == "en" else "Mišrios")
+
+    nxt = hass.states.get(_entity(hass, entry, "sensor:next_pickup"))
+    assert mixed_name in nxt.attributes["waste_names"]

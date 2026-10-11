@@ -45,6 +45,13 @@ class AtliekuGrafikasCoordinator(DataUpdateCoordinator[Feed]):
             update_interval=next_sync_delay(dt_util.utcnow(), self._slot),
         )
         self._client = client
+        # Rūšių pavadinimai HA kalba (kalendoriui ir atributams). Užpildo
+        # `async_setup_entry`; pakeitus HA kalbą, atsinaujina perkrovus integraciją.
+        self.waste_names: dict[str, str] = {}
+
+    def waste_name(self, code: str, fallback: str) -> str:
+        """Rūšies pavadinimas HA kalba; nežinomai rūšiai — serverio."""
+        return self.waste_names.get(code, fallback)
 
     async def _async_update_data(self) -> Feed:
         # Nepavykus lieka trumpas intervalas; pavykus — iki kito savo laiko.

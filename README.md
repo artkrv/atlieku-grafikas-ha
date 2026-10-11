@@ -40,9 +40,13 @@ Kiekvienam adresui — įrenginys su:
 
 | Entity | Būsena | Atributai |
 | --- | --- | --- |
-| `sensor.<adresas>_<rūšis>` (pvz. *Mišrios*) | artimiausio išvežimo data | `waste_type`, `days_until`, `upcoming`, `providers` |
-| `sensor.<adresas>_kitas_isvezimas` | artimiausias bet kurios rūšies išvežimas | `days_until`, `waste_types`, `waste_names` |
-| `calendar.<adresas>_isvezimai` | visos dienos įvykiai | aprašymo pirma eilutė — rūšies kodas |
+| *Mišrios*, *Pakuotės*, … (po vieną rūšiai) | artimiausio išvežimo data | `waste_type`, `days_until`, `upcoming`, `providers` |
+| *Kitas išvežimas* | artimiausias bet kurios rūšies išvežimas | `days_until`, `waste_types`, `waste_names` |
+| *Išvežimų kalendorius* | `on` — šiandien išvežimo diena, `off` — ne | visos dienos įvykiai; aprašymo pirma eilutė — rūšies kodas |
+
+Pavadinimai rodomi Home Assistant kalba (lietuvių, anglų, lenkų, rusų, ukrainiečių).
+`entity_id` priklauso nuo kalbos, kuria integracija buvo pridėta — tikslų rasite įrenginio
+puslapyje.
 
 Duomenys atnaujinami kartą per parą, kiekvienas adresas savo pastoviu paros laiku (kad
 visi naudotojai nesikreiptų vienu metu); nepavykus — po valandos. `days_until` ir
@@ -58,7 +62,7 @@ Pranešimas 19:00 dieną prieš išvežimą:
 triggers:
   - trigger: calendar
     event: start
-    entity_id: calendar.vilniaus_g_5_bajorai_isvezimai
+    entity_id: calendar.vilniaus_g_5_bajorai_isvezimu_kalendorius
     offset: "-05:00:00"
 actions:
   - action: notify.mobile_app_telefonas

@@ -1,0 +1,41 @@
+{
+  "entity": {
+    "sensor": {
+      "mixed": {
+        "name": "Смешанные отходы"
+      },
+      "packaging": {
+        "name": "Упаковка"
+      },
+      "glass": {
+        "name": "Стекло"
+      },
+      "paper": {
+        "name": "Бумага"
+      },
+      "food": {
+        "name": "Пищевые отходы"
+      },
+      "organic": {
+        "name": "Био"
+      },
+      "bio": {
+        "name": "Биоотходы"
+      },
+      "green": {
+        "name": "Зелёные отходы"
+      },
+      "bulky": {
+        "name": "Крупногабаритные"
+      },
+      "next_pickup": {
+        "name": "Следующий вывоз"
+      }
+    },
+    "calendar": {
+      "pickup_calendar": {
+        "name": "Календарь вывоза"
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-from .const import DEFAULT_ICON, WASTE_ICONS
+from .const import DEFAULT_ICON, TRANSLATED_WASTE_TYPES, WASTE_ICONS
 from .coordinator import AtliekuGrafikasConfigEntry, AtliekuGrafikasCoordinator
 from .entity import AtliekuGrafikasEntity
 from .feed import WasteSchedule, days_until
@@ -51,6 +51,13 @@ class WasteTypeSensor(AtliekuGrafikasEntity, SensorEntity):
         super().__init__(coordinator, code)
         self._code = code
         self._attr_icon = WASTE_ICONS.get(code, DEFAULT_ICON)
+        if code in TRANSLATED_WASTE_TYPES:
+            # Pavadinimas HA kalba iš `translations/*.json`.
+            self._attr_translation_key = code
+        else:
+            # Nežinoma rūšis — serverio pavadinimas (programėlės kalba) geriau nei kodas.
+            waste = coordinator.data.by_code().get(code)
+            self._attr_name = waste.name if waste is not None else code
 
     @property
     def _waste(self) -> WasteSchedule | None:
@@ -60,11 +67,6 @@ class WasteTypeSensor(AtliekuGrafikasEntity, SensorEntity):
     def available(self) -> bool:
         # Rūšis dingo iš grafiko (pvz., sezonas baigėsi) — jutiklis lieka, bet nepasiekiamas.
         return super().available and self._waste is not None
-
-    @property
-    def name(self) -> str:
-        waste = self._waste
-        return waste.name if waste is not None else self._code
 
     @property
     def native_value(self) -> date | None:
@@ -116,5 +118,5 @@ class NextPickupSensor(AtliekuGrafikasEntity, SensorEntity):
             "days_until": days_until(first, self.today()),
             # Tą pačią dieną gali būti kelios rūšys.
             "waste_types": [w.code for w in wastes],
-            "waste_names": [w.name for w in wastes],
+            "waste_names": [self.coordinator.waste_name(w.code, w.name) for w in wastes],
         }

@@ -1,0 +1,41 @@
+{
+  "entity": {
+    "sensor": {
+      "mixed": {
+        "name": "Змішані відходи"
+      },
+      "packaging": {
+        "name": "Упаковка"
+      },
+      "glass": {
+        "name": "Скло"
+      },
+      "paper": {
+        "name": "Папір"
+      },
+      "food": {
+        "name": "Харчові відходи"
+      },
+      "organic": {
+        "name": "Біо"
+      },
+      "bio": {
+        "name": "Біовідходи"
+      },
+      "green": {
+        "name": "Зелені відходи"
+      },
+      "bulky": {
+        "name": "Великогабаритні"
+      },
+      "next_pickup": {
+        "name": "Наступне вивезення"
+      }
+    },
+    "calendar": {
+      "pickup_calendar": {
+        "name": "Календар вивезення"
+      }
+    }
+  }
+}
